@@ -12,12 +12,12 @@ export const AppRoutes = () => {
         icon: 'home',
         path: '/dashboard',
         label: 'Página inicial',
-      },
-      {
-        icon: 'star',
-        path: '/a',
-        label: 'Página 2',
       }
+      // {
+      //   icon: 'star',
+      //   path: '/a',
+      //   label: 'Página 2',
+      // }
     ]);
   }, [])
 

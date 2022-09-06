@@ -2,7 +2,7 @@ import { Avatar, Divider, Drawer, Icon, List, ListItemButton, ListItemIcon, List
 import { yellow } from "@mui/material/colors";
 import { Box } from "@mui/system";
 import { useMatch, useNavigate, useResolvedPath } from "react-router-dom";
-import { useDrawerContext } from "../../context";
+import { useAppThemeContext, useDrawerContext } from "../../context";
 
 interface IListItemLinkProps {
     to: string;
@@ -42,6 +42,7 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({ children }) => {
     const theme = useTheme();
     const smDown = useMediaQuery(theme.breakpoints.down('sm'));
     const { isDrawerOpen, toggleDrawerOpen, drawerOptions } = useDrawerContext();
+    const { toggleTheme } = useAppThemeContext();
 
     return (
         <>
@@ -52,7 +53,7 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({ children }) => {
                         <Avatar sx={{ height: theme.spacing(12), width: theme.spacing(12), bgcolor: yellow[700] }}>MATS</Avatar>
                     </Box>
 
-                    <Divider>
+                    <Divider></Divider>
                         <Box flex={1}>
                             <List component="nav">
                                 {drawerOptions.map(drawerOption => (
@@ -66,7 +67,20 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({ children }) => {
                                 ))}
                             </List>
                         </Box>
-                    </Divider>
+                        
+                        <Box>
+                            <List component="nav">
+                                <ListItemButton  onClick={toggleTheme}>
+                                    <ListItemIcon>
+                                        <Icon>
+                                            dark_mode
+                                        </Icon>
+                                    </ListItemIcon>
+                                    <ListItemText primary="Alterar tema" />
+                                </ListItemButton>
+                            </List>
+                        </Box>
+                    
                 </Box>
             </Drawer>
             <Box height="100vh" marginLeft={smDown ? 0 : theme.spacing(28)}>
